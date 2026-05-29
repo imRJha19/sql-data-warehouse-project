@@ -120,7 +120,7 @@ if object_id ('[bronze].[erp_LOC_A101]','U') is not null
 	drop table [bronze].[erp_LOC_A101]
 go
 CREATE TABLE [bronze].[erp_LOC_A101](
-	[cid] [int] NULL,
+	[cid] [varchar](50) NULL,
 	[cntry] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
