@@ -1,3 +1,48 @@
+/*
+===============================================================================
+Stored Procedure: silver.load_silver
+
+Purpose:
+    This stored procedure transforms, cleanses, and loads data from the
+    Bronze layer into the Silver layer tables of the data warehouse.
+
+Process:
+    1. Truncates existing Silver tables
+    2. Cleans and standardizes source data
+    3. Removes duplicate customer records
+    4. Validates and transforms date fields
+    5. Handles missing and invalid values
+    6. Standardizes business attributes such as gender, marital status,
+       product categories, and countries
+    7. Calculates product validity periods using window functions
+    8. Tracks execution time for each transformation process
+    9. Implements error handling using TRY...CATCH
+
+Source Tables:                                                   
+    - bronze.crm_cust_info
+    - bronze.crm_prd_info
+    - bronze.crm_sales_details
+    - bronze.erp_CUST_AZ12
+    - bronze.erp_LOC_A101
+    - bronze.erp_PX_CAT_G1V2
+
+Target Tables:
+    - silver.crm_cust_info
+    - silver.crm_prd_info
+    - silver.crm_sales_details
+    - silver.erp_CUST_AZ12
+    - silver.erp_LOC_A101
+    - silver.erp_PX_CAT_G1V2
+
+
+Layer:
+    Silver Layer (Data Cleansing & Transformation)
+
+Author:
+    Adarsh Jha
+===============================================================================
+*/
+
 create or alter procedure silver.load_silver as 
 begin 
 begin try 
